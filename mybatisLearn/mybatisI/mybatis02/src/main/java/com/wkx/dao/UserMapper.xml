@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wkx.dao.UserMapper">
+
+
+    <!-- 解决当数据库中的字段和实体属性不一致问题 -->
+    <resultMap id="resultMap1" type="user">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="pwd" />
+    </resultMap>
+
+    <select id="getUser" resultMap="resultMap1">
+        select * from user
+    </select>
+
+    <select id="getUserById" resultType="user" parameterType="int">
+        select * from user where id=#{id}
+    </select>
+
+    <insert id="insertUser" parameterType="user">
+        insert into user(id,name,pwd) value (#{id},#{name},#{pwd})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="user">
+        update user set name=#{name},pwd=#{pwd} where id=#{id}
+    </update>
+
+    <!--map类型(只需要其中的key对应#{username})-->
+    <update id="updateUserMap" parameterType="map">
+        update user set name=#{username} where id=#{uid}
+    </update>
+</mapper>

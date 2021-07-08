@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wkx.dao.UserMapper">
+
+    <select id="getUser1" resultType="User">
+        select *
+        from user;
+    </select>
+
+    <select id="getUsers" resultType="User">
+        select * from user limit 0,2;
+    </select>
+
+    <select id="getUsersMap" parameterType="map" resultType="User">
+        select * from user limit #{pageStart},#{pageLimit}
+    </select>
+
+    <select id="getUserList" resultType="User">
+        select * from user limit 0,2;
+    </select>
+
+</mapper>
