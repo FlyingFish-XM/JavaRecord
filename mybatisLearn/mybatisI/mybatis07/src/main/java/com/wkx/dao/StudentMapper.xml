@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkx.dao.StudentMapper">
+
+    <select id="getStudentIf" resultType="Student" parameterType="map">
+        select * from student where 1=1
+        <if test="name!=null">
+            and name = #{name}
+        </if>
+        <if test="age!=null">
+            and age = #{age}
+        </if>
+    </select>
+
+    <select id="getStudentWhere" parameterType="map" resultType="Student">
+        select * from student
+        <where>
+            <if test="sex!=null">
+                and sex=#{sex}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+        </where>
+    </select>
+
+    <select id="getStudentChoose" parameterType="map" resultType="Student">
+        select * from student
+        <where>
+            <choose>
+                <when test="sex!=null">
+                    and sex = #{sex}
+                </when>
+                <when test="name!=null">
+                    and name = #{name}
+                </when>
+                <otherwise>
+                    id=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="setStudentSet" parameterType="map">
+        update student
+        <set>
+            <if test="sex!=null">
+                sex=#{sex}
+            </if>
+            <if test="name!=null">
+                name=#{name}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+
+    <sql id="testSql">
+        <if test="name!=null">
+            and name=#{name}
+        </if>
+        <if test="sex!=null">
+            and sex=#{sex}
+        </if>
+    </sql>
+
+    <select id="getStudentSql" resultType="Student" parameterType="map">
+        select * from student
+        <where>
+            <include refid="testSql" />
+        </where>
+    </select>
+
+    <select id="getStudentForEach" parameterType="map" resultType="Student">
+        select * from student where id in
+                <foreach collection="ids" separator="," item="id" open="(" close=")">
+                    #{id}
+                </foreach>
+           <!-- <where>
+                <foreach collection="ids" index="id" item="id" open="(" close=")" separator="or">
+                   id = #{id}
+                </foreach>
+            </where>-->
+    </select>
+</mapper>
