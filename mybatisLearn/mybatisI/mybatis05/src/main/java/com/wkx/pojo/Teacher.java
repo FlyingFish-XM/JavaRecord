@@ -1,5 +1,7 @@
 package com.wkx.pojo;
 
+import java.util.List;
+
 /**
  * @author kaixuan.wang
  * @date 2021年07月17日 12:40
@@ -8,6 +10,8 @@ public class Teacher {
 
     private int id;
     private String name;
+
+    private List<Student> students;
 
     public Teacher() {
     }

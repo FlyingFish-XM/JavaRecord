@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--p标签，对应的是property属性-->
+    <bean id="user" class="com.wkx.pojo.User" p:name="wkx" />
+
+    <!--c标签，需要有构造方法才可以使用相当于constructor-arg-->
+    <bean id="user1" class="com.wkx.pojo.User" c:name="wkx" c:age="23"/>
+
+
+    <!--测试bean的生命周期,
+    prototype原型模式：每次使用Bean都是创建新的对象
+    singleton单例模式：每次使用bean都是相同对象
+    -->
+    <bean id="user2" class="com.wkx.pojo.User" scope="singleton">
+        <property name="name" value="我开心"/>
+        <property name="age" value="24"/>
+    </bean>
+
+
+    <bean id="user3" class="com.wkx.pojo.User" scope="prototype">
+        <property name="name" value="我开心"/>
+        <property name="age" value="24"/>
+    </bean>
+
+</beans>

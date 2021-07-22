@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--默认使用午餐构造函数创建对象-->
+    <bean id="user" class="com.wkx.pojo.User">
+        <property name="name" value="wkx在这路"/>
+    </bean>
+
+    <!--当没有无参构造函数时会报错-->
+    <!--有参构造，通过索引方式-->
+    <bean id="user1" class="com.wkx.pojo.User1">
+        <constructor-arg index="1" value="有参索引男" />
+        <constructor-arg index="0" value="有参索引wkx" />
+    </bean>
+
+    <!--此种方法只能传入类型不同的，如果有两个String类型，则会按顺序进行排列，可能会导致顺序不同-->
+    <!--不推荐使用-->
+    <bean id="user2" class="com.wkx.pojo.User1">
+        <constructor-arg type="java.lang.String" value="有参构造类型传入数值男"/>
+        <constructor-arg type="java.lang.String" value="有参构造类型传入数值wkx"/>
+    </bean>
+
+    <!--有参构造IoC通过name创建对象-->
+    <!--name属性是为此bean起别名-->
+    <bean id="user3" class="com.wkx.pojo.User1" name="user12">
+        <constructor-arg name="name" value="有参构造名字name传入wkx"/>
+        <constructor-arg name="sex" value="有参构造名字name传入男"/>
+    </bean>
+
+
+</beans>

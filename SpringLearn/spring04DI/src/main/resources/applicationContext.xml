@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="computer" class="com.wkx.pojo.Computer">
+        <property name="name" value="dell"/>
+        <property name="type" value="戴尔"/>
+    </bean>
+
+    <bean id="phone" class="com.wkx.pojo.Phone">
+        <property name="name" value="ThinkPad"/>
+        <property name="type" value="联想"/>
+    </bean>
+
+
+    <!--通过bean的id选择byName-->
+    <bean id="user" class="com.wkx.pojo.User" autowire="byName">
+        <property name="name" value="wkx"/>
+    </bean>
+
+    <!--通过对象的类型选择byType，如果有相同的类型将会报错-->
+    <bean id="user1" class="com.wkx.pojo.User" autowire="byType">
+        <property name="name" value="wkx"/>
+    </bean>
+
+</beans>

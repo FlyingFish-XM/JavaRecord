@@ -22,7 +22,7 @@
     <!--使用自定义Cache-->
     <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 
-    <select id="getUserCache" parameterType="int" resultType="User">
+    <select id="getUserCache" parameterTy   pe="int" resultType="User">
         select * from user
     </select>
     

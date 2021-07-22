@@ -18,7 +18,6 @@ public class test {
         TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
         List<Teacher> teacher = mapper.getTeacher(1);
         System.out.println(teacher);
-
     }
 
 

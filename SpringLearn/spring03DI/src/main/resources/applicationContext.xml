@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.wkx.pojo.Address"/>
+
+    <bean id="student" class="com.wkx.pojo.Student">
+
+        <!--set方法注入字符串-->
+        <property name="name" value="张三"/>
+
+        <!--set方法注入bean-->
+        <property name="address" ref="address"/>
+
+        <!--数组-->
+        <property name="books">
+            <array>
+                <value>Java编程</value>
+                <value>穷查理宝典</value>
+                <value>我的第一本人生规划</value>
+            </array>
+        </property>
+
+        <!--list结合-->
+        <property name="hobby">
+            <list>
+                <value>打了篮球</value>
+                <value>Rap</value>
+                <value>唱跳</value>
+            </list>
+        </property>
+
+        <!--Map-->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="4242423525235" />
+                <entry key="社保卡号" value="31424215253"/>
+            </map>
+        </property>
+
+        <!--Set-->
+        <property name="games">
+            <set>
+                <value>斗地主</value>
+                <value>王者荣耀</value>
+            </set>
+        </property>
+
+        <!--空字符-->
+       <!-- <property name="wife" value=""/>-->
+        <!--null-->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <property name="info">
+            <props>
+                <prop key="姓名">wkx</prop>
+                <prop key="性别">男</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
